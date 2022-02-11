@@ -17,5 +17,5 @@ export const sequelize = new Sequelize({
   username: config.username,
   password: config.password,
   port: 3306,
-  logging: false
+  logging: true
 });

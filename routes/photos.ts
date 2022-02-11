@@ -1,5 +1,5 @@
 import Router from "express";
-import { Photos } from "../models/Photos";
+
 import { persistenceService } from "../services/PersistenceService";
 
 const router = Router();
@@ -15,6 +15,7 @@ router.get('/photos/:photoId', async function (request, response) {
     console.log('GET Photo by Id finished');
   } catch (error) {
     console.log('Get Photo by Id Error: ', error);
+    response.status(500).send();
   }
 });
 
@@ -27,6 +28,7 @@ router.get('/photos/all', async function (request, response) {
     console.log('GET All Photos finished');
   } catch (error) {
     console.log('Get Photos Error: ', error);
+    response.status(500).send();
   }
 });
 

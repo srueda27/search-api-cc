@@ -29,4 +29,19 @@ router.get('/photos/all', async function (request, response) {
         console.log('Get Photos Error: ', error);
     }
 });
+router.post('/photos', async function (request, response) {
+    console.log('POST Photo started');
+    const title = request.body.title;
+    const photoUrl = request.body.photoUrl;
+    const description = request.body.description;
+    const shortDescription = request.body.shortDescription;
+    try {
+        await PersistenceService_1.persistenceService.createPhoto(title, photoUrl, description, shortDescription);
+        response.status(200).send();
+    }
+    catch (error) {
+        console.log('POST Photo Error: ', error);
+        response.status(500).send();
+    }
+});
 exports.default = router;

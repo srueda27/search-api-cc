@@ -16,5 +16,5 @@ exports.sequelize = new sequelize_typescript_1.Sequelize({
     username: config.username,
     password: config.password,
     port: 3306,
-    logging: false
+    logging: true
 });

@@ -11,11 +11,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Photos = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
+const sequelize_1 = require("sequelize");
 let Photos = class Photos extends sequelize_typescript_1.Model {
 };
 __decorate([
     sequelize_typescript_1.PrimaryKey,
-    sequelize_typescript_1.Column,
+    sequelize_typescript_1.Column({
+        autoIncrement: true,
+        primaryKey: true,
+        type: sequelize_1.DataTypes.INTEGER
+    }),
     __metadata("design:type", Number)
 ], Photos.prototype, "id", void 0);
 __decorate([

@@ -1,9 +1,16 @@
-import { Column, Model, PrimaryKey, Table } from 'sequelize-typescript';
+"use strict";
+
+import { AutoIncrement, Column, Model, PrimaryKey, Table } from 'sequelize-typescript';
+import { DataTypes } from 'sequelize';
 
 @Table({ tableName: 'photos' })
 export class Photos extends Model<Photos> {
   @PrimaryKey
-  @Column
+  @Column({
+    autoIncrement: true,
+    primaryKey: true,
+    type: DataTypes.INTEGER
+  })
   id!: number;
 
   @Column

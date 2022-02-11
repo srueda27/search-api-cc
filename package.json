@@ -1,0 +1,11 @@
+{
+  "name": "search-api-cc",
+  "version": "1.0.0",
+  "description": "Search API for photos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Santiago Rueda Ortiz",
+  "license": "ISC"
+}

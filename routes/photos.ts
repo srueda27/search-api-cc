@@ -15,7 +15,7 @@ router.get('/photos/:photoId?', async function (request, response) {
       const photos = await persistenceService.getPhotos();
       response.status(200).send(photos);
     }
-    
+
     console.log('GET Photos by Id finished');
   } catch (error) {
     console.log('Get Photo by Id Error: ', error.errors[0].message);
@@ -30,6 +30,10 @@ router.post('/photos', async function (request, response) {
   const photoUrl = request.body.photoUrl;
   const description = request.body.description;
   const shortDescription = request.body.shortDescription;
+
+  if (!title && !photoUrl && !description && !shortDescription) {
+    response.status(400).send();
+  }
 
   try {
     await persistenceService.createPhoto(title, photoUrl, description, shortDescription);

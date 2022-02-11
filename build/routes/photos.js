@@ -6,12 +6,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const PersistenceService_1 = require("../services/PersistenceService");
 const router = express_1.default();
-router.get('/photos/:photoId?', async function (request, response) {
+router.get('/:photoId?', async function (request, response) {
     console.log('GET Photos started');
     const photoId = request.params.photoId;
     try {
         if (photoId) {
-            const photo = await PersistenceService_1.persistenceService.getPhoto(parseInt(photoId));
+            const photo = await PersistenceService_1.persistenceService.getPhotoById(parseInt(photoId));
             response.status(200).send(photo);
         }
         else {
@@ -21,16 +21,32 @@ router.get('/photos/:photoId?', async function (request, response) {
         console.log('GET Photos by Id finished');
     }
     catch (error) {
-        console.log('Get Photo by Id Error: ', error);
+        console.log('Get Photo by Id Error: ', error.errors[0].message);
         response.status(500).send();
     }
 });
-router.post('/photos', async function (request, response) {
+router.get('/title/:title', async function (request, response) {
+    console.log('GET Photos by Title started');
+    const title = request.params.title;
+    try {
+        const photos = await PersistenceService_1.persistenceService.getPhotoBySimilarTitle(title);
+        response.status(200).send(photos);
+        console.log('GET Photos by Title finished');
+    }
+    catch (error) {
+        console.log('Get Photo by Title Error: ', error.errors[0].message);
+        response.status(500).send();
+    }
+});
+router.post('/', async function (request, response) {
     console.log('POST Photos started');
     const title = request.body.title;
     const photoUrl = request.body.photoUrl;
     const description = request.body.description;
     const shortDescription = request.body.shortDescription;
+    if (!title && !photoUrl && !description && !shortDescription) {
+        response.status(400).send();
+    }
     try {
         await PersistenceService_1.persistenceService.createPhoto(title, photoUrl, description, shortDescription);
         response.status(200).send();

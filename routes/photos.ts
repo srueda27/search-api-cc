@@ -4,12 +4,13 @@ import { persistenceService } from "../services/PersistenceService";
 
 const router = Router();
 
-router.get('/photos/:photoId?', async function (request, response) {
+router.get('/:photoId?', async function (request, response) {
   console.log('GET Photos started');
   const photoId = request.params.photoId;
+
   try {
     if (photoId) {
-      const photo = await persistenceService.getPhoto(parseInt(photoId));
+      const photo = await persistenceService.getPhotoById(parseInt(photoId));
       response.status(200).send(photo);
     } else {
       const photos = await persistenceService.getPhotos();
@@ -23,7 +24,22 @@ router.get('/photos/:photoId?', async function (request, response) {
   }
 });
 
-router.post('/photos', async function (request, response) {
+router.get('/title/:title', async function (request, response) {
+  console.log('GET Photos by Title started');
+  const title = request.params.title;
+
+  try {
+    const photos = await persistenceService.getPhotoBySimilarTitle(title);
+    response.status(200).send(photos);
+
+    console.log('GET Photos by Title finished');
+  } catch (error) {
+    console.log('Get Photo by Title Error: ', error.errors[0].message);
+    response.status(500).send();
+  }
+});
+
+router.post('/', async function (request, response) {
   console.log('POST Photos started');
 
   const title = request.body.title;

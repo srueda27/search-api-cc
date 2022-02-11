@@ -4,6 +4,6 @@ import photos from  './photos';
 
 const routes = Router();
 
-routes.use('/', photos);
+routes.use('/photos', photos);
 
 export default routes;

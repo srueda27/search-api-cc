@@ -1,4 +1,5 @@
 import express from "express";
+var cors = require('cors')
 import routes from "./routes";
 
 const app: express.Application = express();
@@ -9,6 +10,6 @@ app.listen(PORT, () => {
   console.log(`Listening on port ${PORT || 4000}`);
 });
 
-app.use(express.json());
+app.use(cors);
 
 app.use("/", routes);

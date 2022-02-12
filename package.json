@@ -18,6 +18,7 @@
     "@types/express": "^4.17.13",
     "@types/node": "^14.0.23",
     "@types/sequelize": "^4.28.11",
+    "cors": "^2.8.5",
     "express": "^4.17.2",
     "mysql2": "^1.7.0",
     "reflect-metadata": "^0.1.13",

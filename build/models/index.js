@@ -3,10 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.sequelize = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
 const config = {
-    username: process.env.DB_USERNAME || 'b14960e753d3a0',
-    password: process.env.DB_PASSWORD || '682797ab',
-    database: process.env.DB_DATABASE || 'heroku_3c124a857c35d1c',
-    host: process.env.DB_HOST || 'us-cdbr-east-05.cleardb.net',
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
+    host: process.env.DB_HOST,
     dialect: "mysql"
 };
 exports.sequelize = new sequelize_typescript_1.Sequelize({

@@ -19,7 +19,7 @@ router.get('/:photoId?', async function (request, response) {
 
     console.log('GET Photos by Id finished');
   } catch (error) {
-    console.log('Get Photo by Id Error: ', error.errors[0].message);
+    console.log('Get Photo by Id Error: ', error);
     response.status(500).send();
   }
 });
@@ -34,7 +34,7 @@ router.get('/title/:title', async function (request, response) {
 
     console.log('GET Photos by Title finished');
   } catch (error) {
-    console.log('Get Photo by Title Error: ', error.errors[0].message);
+    console.log('Get Photo by Title Error: ', error);
     response.status(500).send();
   }
 });
@@ -56,7 +56,7 @@ router.post('/', async function (request, response) {
 
     response.status(200).send();
   } catch (error) {
-    console.log('POST Photo Error: ', error.errors[0].message);
+    console.log('POST Photo Error: ', error);
     response.status(500).send();
   }
 });

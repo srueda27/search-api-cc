@@ -40,7 +40,6 @@ router.get('/title/:title', async function (request, response) {
 });
 router.post('/', async function (request, response) {
     console.log('POST Photos started');
-    console.log('request: ', request.body);
     const title = request.body.title;
     const photoUrl = request.body.photoUrl;
     const description = request.body.description;

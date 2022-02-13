@@ -16,5 +16,5 @@ app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-type');
     next();
-});
+}, express_1.default.json());
 app.use("/", routes_1.default);
